@@ -1,0 +1,42 @@
+# Swift build products and local tooling
+.build/
+.swiftpm/
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+.DS_Store
+*.log
+
+# Credentials, inventories, recovery data, and browser/tool artifacts
+.env
+.env.*
+!.env.example
+.firecrawl/
+.test-artifacts/
+unslop-story/
+backups/
+.harness-manager/
+.agents/
+.pi/
+.claude/
+.codex/
+.cursor/
+.mcp.json
+
+# Preserved web predecessor: never part of the native app or public source
+LegacyWeb/
+node_modules/
+dist/
+src/
+server/
+shared/
+Tests/*.test.ts
+public/
+package.json
+package-lock.json
+tsconfig.json
+vite.config.ts
+index.html
+skills-lock.json
+scripts/demo.ts
