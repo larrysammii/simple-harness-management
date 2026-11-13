@@ -6,7 +6,19 @@ Swift and SwiftUI throughout. No browser, WebView, local web server, or Node.js 
 
 ![Harness Manager, native light appearance with synthetic installations](docs/screenshots/light.png)
 
-## Build and open
+## Download and install
+
+**[Download the universal macOS DMG](https://github.com/larrysammii/simple-harness-management/releases/download/v0.1.0/Harness-Manager-0.1.0-universal.dmg)** · [Release notes and checksum](https://github.com/larrysammii/simple-harness-management/releases/tag/v0.1.0)
+
+Requires **macOS 14.4+**. Runs on **Apple Silicon and Intel**. No development tools are needed.
+
+1. Open the DMG
+2. Drag **Harness Manager** to **Applications**
+3. Open the app from Applications, then eject the DMG
+
+**First-launch notice:** this release is ad-hoc signed, **not Apple Developer ID-signed or notarized**. If macOS blocks it, only proceed if you trust this repository: attempt to open the app, then use **System Settings → Privacy & Security → Open Anyway** if offered. See [Apple's instructions](https://support.apple.com/en-us/102445). Do not disable Gatekeeper globally.
+
+## Build from source
 
 Requires **macOS 14.4+** and a **Swift 6 toolchain**. Apple's Command Line Tools are sufficient to build the app; Xcode is optional.
 
@@ -18,7 +30,13 @@ open "build/Harness Manager.app"
 
 The first build downloads the pinned, native TOML and YAML parser dependencies. Running the app does not require a network connection.
 
-The build script produces a locally ad-hoc-signed `.app`, not a notarized distribution. It builds for the current Mac's architecture. Do not disable Gatekeeper to run an untrusted download; build from reviewed source instead.
+The build script produces a locally ad-hoc-signed `.app`, not a notarized distribution. By default it builds for the current Mac's architecture. For a universal app and drag-to-Applications installer:
+
+```sh
+bash scripts/build-dmg.sh
+```
+
+This creates `build/Harness-Manager-0.1.0-universal.dmg` and `build/SHA256SUMS.txt`. The universal app is also available at `build/universal/Harness Manager.app`. Release binaries are stripped of private build paths; any required native Swift compatibility libraries and complete third-party notices are bundled.
 
 For development:
 
@@ -106,15 +124,7 @@ With Xcode selected, the script runs **XCTest**. On a Command-Line-Tools-only Ma
 
 The diagnostics command exercises native discovery, single and grouped removal, all three configuration formats, byte-exact restore, and package unregister. `--live` is read-only and prints counts only; it cannot be combined with `--exercise`.
 
-CI uses Xcode/XCTest on macOS and verifies the signed app bundle.
-
-## Design
-
-Light-first neo-Swiss editorial minimalism: system sans typography, monochrome counts, a 4px spacing system, fine rules, and monospace scope/path annotations. Native controls keep keyboard focus, file picking, and table interaction familiar.
-
-Visual references: [FreeDesignMD's Vault](https://freedesignmd.com/landingpage/vault-fintech) and [Meta Astryx](https://github.com/meta/astryx). Astryx is React-only; this native implementation uses its design principles, **not a React component dependency**.
-
-The design pass follows **unslop by Damir Sokolovsky ([@heydamir](https://x.com/heydamir))**, licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [design notes](docs/DESIGN.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+CI uses Xcode/XCTest on macOS, builds and verifies both native architectures, and uploads a universal DMG artifact. Published installers are available from GitHub Releases.
 
 ## License
 

@@ -1,0 +1,30 @@
+Harness Manager 0.1.0
+Native macOS app · Apple Silicon and Intel · macOS 14.4 or later
+
+INSTALL
+1. Drag Harness Manager.app onto the Applications shortcut.
+2. Open Harness Manager from your Applications folder.
+3. Eject this disk image after installation.
+
+FIRST-LAUNCH SECURITY NOTICE
+This release is ad-hoc signed. It is NOT Apple Developer ID-signed or notarized.
+macOS may block its first launch. Only proceed if you trust this release and
+obtained it from the official repository below.
+
+After attempting to open the app, go to System Settings > Privacy & Security
+and choose Open Anyway if macOS offers it. Confirm Open when prompted.
+Do not disable Gatekeeper globally or remove security protections for unrelated apps.
+
+Apple's instructions: https://support.apple.com/en-us/102445
+
+DOWNLOADS AND SOURCE
+https://github.com/larrysammii/simple-harness-management/releases
+https://github.com/larrysammii/simple-harness-management
+
+No build tools, browser, local server, or Node.js runtime are required.
+The app reads local harness configurations. It does not upload your inventory
+or execute installed package/extension code. Removal requires confirmation and
+creates private, recoverable backups on your Mac.
+
+Project license: MIT. Third-party notices and complete native parser licenses
+are inside Harness Manager.app/Contents/Resources.

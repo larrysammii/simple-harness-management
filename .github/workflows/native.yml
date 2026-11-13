@@ -16,5 +16,15 @@ jobs:
         run: swift test
       - name: Native diagnostics with synthetic installations
         run: swift run harness-manager-check --exercise
-      - name: Build and verify app bundle
-        run: bash scripts/build-app.sh
+      - name: Build and verify universal DMG
+        run: |
+          bash scripts/build-dmg.sh
+          bash scripts/verify-dmg.sh
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Harness-Manager-universal-DMG
+          path: |
+            build/Harness-Manager-*-universal.dmg
+            build/SHA256SUMS.txt
+          if-no-files-found: error
